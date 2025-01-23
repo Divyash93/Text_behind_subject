@@ -1,101 +1,138 @@
-import Image from "next/image";
+'use client';
+import Link from 'next/link';
+import { FiImage, FiType, FiDownload, FiLayers, FiZap, FiStar } from 'react-icons/fi';
+import Header from '@/components/Header';
+import { Particles } from "@/components/ui/particles";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const features = [
+    {
+      icon: <FiLayers className="w-6 h-6 text-blue-400" />,
+      title: 'AI Background Removal',
+      description: 'Remove backgrounds instantly with our advanced AI technology. Perfect for product photos and portraits.',
+    },
+    {
+      icon: <FiType className="w-6 h-6 text-purple-400" />,
+      title: 'Advanced Typography',
+      description: 'Create stunning text designs with custom fonts, gradients, and effects. Perfect for social media and marketing.',
+    },
+    {
+      icon: <FiDownload className="w-6 h-6 text-blue-400" />,
+      title: 'Quick Export',
+      description: 'Export your creations in multiple formats with high quality. Ready to share or use in your projects.',
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <>
+      <Header />
+      <div className="min-h-screen">
+        {/* Hero Section */}
+        <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
+          {/* Particles Effect */}
+          <Particles
+            className="absolute inset-0"
+            quantity={100}
+            ease={80}
+            color="#8692FE"
+            size={0.5}
+            staticity={50}
+          />
+          
+          {/* Round Glow Effect */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px]">
+              <div className="absolute inset-0 rounded-full bg-[#8692FE]/25 blur-[150px]" />
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="relative z-10 text-center px-4">
+            <div className="inline-block animate-float">
+              <span className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-full bg-[#8692FE]/10 text-[#8692FE] ring-1 ring-inset ring-[#8692FE]/30 mb-6">
+                <FiZap className="mr-1" /> AI-Powered Image Editing
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              Create Text behind Images{' '}
+              <span className="bg-gradient-to-r from-[#8692FE] to-[#8692FE] text-transparent bg-clip-text">
+                with AI
+              </span>
+            </h1>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+              Use our intuitive editor to Place text behind image or subject with ease.Upload your photos, add stunning text effects, and create professional designs in seconds.
+            </p>
+            <div className="flex items-center justify-center space-x-4">
+              <Link 
+                href="/editor"
+                className="inline-flex items-center px-8 py-4 bg-[#8692FE] hover:bg-[#6B77E5] text-white font-medium rounded-xl text-lg transition-all transform hover:scale-105"
+              >
+                Start Creating
+                <FiImage className="ml-2" />
+              </Link>
+              <a 
+                href="#features"
+                className="inline-flex items-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-medium rounded-xl text-lg transition-all"
+              >
+                Learn More
+              </a>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* Features Section */}
+        <div id="features" className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 tra">
+          <div className="text-center mb-16">
+            <span className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-full bg-purple-500/10 text-purple-400 ring-1 ring-inset ring-[#8692FE]/30 mb-6">
+              <FiStar className="mr-1" /> Features
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Everything You Need
+            </h2>
+            <p className="text-xl text-gray-400">Powerful tools for your creative journey</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="group relative p-6 bg-[#141519]/40 backdrop-blur-sm rounded-xl transition-all duration-300 border border-[#585B7A]/40"
+              >
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#8692FE]/5 to-[#c084fc]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative z-10">
+                  <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
+                  <p className="text-gray-400">{feature.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-3xl p-8 md:p-12 backdrop-blur-xl border border-white/10">
+            <div className="text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Ready to Transform Your Images?
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Join thousands of creators who trust PixelCraft AI for their image editing needs.
+              </p>
+              <Link 
+                href="/editor"
+                className="inline-flex items-center px-8 py-4 bg-white text-blue-900 hover:bg-gray-100 font-bold rounded-xl text-lg transition-all transform hover:scale-105"
+              >
+                Start Creating Now
+                <FiZap className="ml-2" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </>
   );
 }
